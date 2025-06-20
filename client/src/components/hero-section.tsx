@@ -19,12 +19,12 @@ export default function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
               Transform Your Property with{" "}
-              <span className="text-accent-blue">Professional</span>{" "}
+              <span className="text-yellow-300">Professional</span>{" "}
               Power Washing
             </h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-xl text-white mb-8 leading-relaxed opacity-90">
               Restore your home's beauty and increase its value with our expert pressure washing services. 
               We deliver exceptional results that make your property shine like new.
             </p>
@@ -52,8 +52,8 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
-                <div className="text-3xl font-bold">500+</div>
-                <div className="text-blue-200">Projects Done</div>
+                <div className="text-3xl font-bold text-white">500+</div>
+                <div className="text-white opacity-80">Projects Done</div>
               </motion.div>
               <motion.div 
                 className="text-center"
@@ -61,8 +61,8 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
-                <div className="text-3xl font-bold">5 Star</div>
-                <div className="text-blue-200">Rating</div>
+                <div className="text-3xl font-bold text-white">5 Star</div>
+                <div className="text-white opacity-80">Rating</div>
               </motion.div>
               <motion.div 
                 className="text-center"
@@ -70,8 +70,8 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <div className="text-3xl font-bold">10+</div>
-                <div className="text-blue-200">Years Experience</div>
+                <div className="text-3xl font-bold text-white">10+</div>
+                <div className="text-white opacity-80">Years Experience</div>
               </motion.div>
             </div>
           </motion.div>

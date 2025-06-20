@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logoImage from "@assets/JPW_1750443486235.png";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -36,7 +37,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <img 
-              src="@assets/JPW_1750443486235.png" 
+              src={logoImage} 
               alt="Jeanius Power Washing Logo" 
               className="h-12 w-auto mb-4 filter brightness-0 invert"
             />
