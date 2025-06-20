@@ -34,7 +34,7 @@ export default function Navigation() {
               className="h-20 w-auto object-cover"
               style={{ 
                 objectPosition: 'center',
-                clipPath: 'inset(15% 10% 20% 10%)'
+                clipPath: 'inset(25% 15% 30% 15%)'
               }}
             />
           </div>

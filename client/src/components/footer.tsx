@@ -39,10 +39,11 @@ export default function Footer() {
             <img 
               src={logoImage} 
               alt="Jeanius Power Washing Logo" 
-              className="h-16 w-auto mb-4 filter brightness-0 invert object-cover"
+              className="h-16 w-auto mb-4 object-cover"
               style={{ 
                 objectPosition: 'center',
-                clipPath: 'inset(15% 10% 20% 10%)'
+                clipPath: 'inset(25% 15% 30% 15%)',
+                filter: 'brightness(0) invert(1)'
               }}
             />
             <p className="text-gray-300 mb-4">
