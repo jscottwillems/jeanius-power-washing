@@ -31,7 +31,7 @@ export default function Navigation() {
             <img 
               src={logoImage} 
               alt="Jeanius Power Washing Logo" 
-              className="h-20 w-auto object-cover"
+              className="h-24 w-auto object-cover"
               style={{ 
                 objectPosition: 'center',
                 clipPath: 'inset(25% 15% 30% 15%)'

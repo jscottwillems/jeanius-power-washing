@@ -36,16 +36,25 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <img 
-              src={logoImage} 
-              alt="Jeanius Power Washing Logo" 
-              className="h-16 w-auto mb-4 object-cover"
+            <div 
+              className="h-16 mb-4 overflow-hidden"
               style={{ 
-                objectPosition: 'center',
-                clipPath: 'inset(25% 15% 30% 15%)',
+                width: 'auto',
                 filter: 'brightness(0) invert(1)'
               }}
-            />
+            >
+              <img 
+                src={logoImage} 
+                alt="Jeanius Power Washing Logo" 
+                className="h-20 w-auto object-cover"
+                style={{ 
+                  objectPosition: 'center',
+                  marginTop: '-20%',
+                  marginLeft: '-15%',
+                  marginRight: '-15%'
+                }}
+              />
+            </div>
             <p className="text-gray-300 mb-4">
               Professional pressure washing services for residential and commercial properties. 
               Transforming your property with exceptional results.
