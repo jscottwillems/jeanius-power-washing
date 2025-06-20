@@ -39,7 +39,7 @@ export default function HeroSection() {
               <Button 
                 variant="outline"
                 size="lg"
-                className="border-2 border-white text-white font-bold text-lg hover:bg-white hover:text-primary-blue transition-colors px-8 py-4"
+                className="border-2 border-white text-white bg-transparent font-bold text-lg hover:bg-white hover:text-primary-blue transition-colors px-8 py-4"
               >
                 <Phone className="mr-2 h-5 w-5" />
                 Call Now
