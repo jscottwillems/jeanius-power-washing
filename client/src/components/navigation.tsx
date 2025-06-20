@@ -28,7 +28,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <img 
-              src="@assets/JPW_1750441210201.jpg" 
+              src="@assets/JPW_1750443486235.png" 
               alt="Jeanius Power Washing Logo" 
               className="h-12 w-auto"
             />

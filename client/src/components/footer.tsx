@@ -36,7 +36,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <img 
-              src="@assets/JPW_1750441210201.jpg" 
+              src="@assets/JPW_1750443486235.png" 
               alt="Jeanius Power Washing Logo" 
               className="h-12 w-auto mb-4 filter brightness-0 invert"
             />
