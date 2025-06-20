@@ -101,10 +101,11 @@ This is a modern full-stack web application for Jeanius Power Washing, a profess
 - **Port Configuration**: Development on port 5000, production on port 80
 
 ### Database Strategy
-- **Development**: Configured for Neon serverless PostgreSQL
+- **Production**: PostgreSQL database with Drizzle ORM
+- **Connection**: Neon serverless PostgreSQL via DATABASE_URL environment variable
 - **Migrations**: Drizzle Kit for schema migrations with `npm run db:push`
-- **Connection**: Environment variable based connection string
-- **Fallback**: In-memory storage implementation for development without database
+- **Storage Layer**: DatabaseStorage implementation using type-safe database operations
+- **Tables**: Users and contact_submissions with proper schema validation
 
 ### Asset Management
 - **Static Assets**: Served from `attached_assets` directory
