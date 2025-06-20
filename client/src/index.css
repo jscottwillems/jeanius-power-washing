@@ -70,36 +70,4 @@
   }
 }
 
-@layer utilities {
-  .bg-primary-blue {
-    background-color: var(--primary-blue);
-  }
-  
-  .bg-light-blue {
-    background-color: var(--light-blue);
-  }
-  
-  .bg-accent-blue {
-    background-color: var(--accent-blue);
-  }
-  
-  .text-primary-blue {
-    color: var(--primary-blue);
-  }
-  
-  .text-light-blue {
-    color: var(--light-blue);
-  }
-  
-  .text-accent-blue {
-    color: var(--accent-blue);
-  }
-  
-  .border-primary-blue {
-    border-color: var(--primary-blue);
-  }
-  
-  .hover\:bg-primary-blue:hover {
-    background-color: hsl(220, 90%, 38%);
-  }
-}
+

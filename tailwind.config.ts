@@ -61,6 +61,10 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        // Custom brand colors
+        "primary-blue": "var(--primary-blue)",
+        "light-blue": "var(--light-blue)",
+        "accent-blue": "var(--accent-blue)",
       },
       keyframes: {
         "accordion-down": {
