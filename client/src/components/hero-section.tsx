@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import awardImage from "@assets/award_edited_1750447484517.jpg";
 
 export default function HeroSection() {
   const scrollToContact = () => {
@@ -83,7 +84,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+              src={awardImage} 
               alt="Professional pressure washing service" 
               className="rounded-2xl shadow-2xl w-full"
             />

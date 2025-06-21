@@ -9,7 +9,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { insertContactSubmissionSchema } from "@shared/schema";
 import { motion } from "framer-motion";
 import { 
   Phone, 
@@ -19,11 +18,21 @@ import {
   Check,
   Loader2
 } from "lucide-react";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
-type ContactFormData = z.infer<typeof insertContactSubmissionSchema>;
+// Frontend validation schema
+const contactFormSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  services: z.string().min(1, "Please select a service"),
+  propertyType: z.string().min(1, "Please select a property type"),
+  message: z.string().optional()
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -36,7 +45,7 @@ export default function ContactSection() {
     watch,
     reset
   } = useForm<ContactFormData>({
-    resolver: zodResolver(insertContactSubmissionSchema),
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -50,12 +59,14 @@ export default function ContactSection() {
 
   const mutation = useMutation({
     mutationFn: async (data: ContactFormData) => {
-      return apiRequest("POST", "/api/contact", data);
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return data;
     },
     onSuccess: () => {
       toast({
         title: "Request Submitted!",
-        description: "We'll contact you within 24 hours with your free estimate.",
+        description: "Thank you for your interest! This is a demo site - in a real application, your request would be sent to our team.",
       });
       reset();
     },
@@ -213,30 +224,29 @@ export default function ContactSection() {
                       <p className="text-sm text-red-600 mt-1">{errors.propertyType.message}</p>
                     )}
                   </div>
-                  
+
                   <div>
-                    <Label htmlFor="message">Additional Details</Label>
+                    <Label htmlFor="message">Additional Details (Optional)</Label>
                     <Textarea
                       id="message"
                       {...register("message")}
-                      placeholder="Tell us about your property and specific cleaning needs..."
+                      placeholder="Tell us more about your needs..."
                       className="mt-2"
-                      rows={4}
                     />
                   </div>
-                  
+
                   <Button 
                     type="submit" 
-                    className="w-full bg-primary-blue hover:bg-primary-blue/90 font-bold text-lg py-4"
+                    className="w-full"
                     disabled={mutation.isPending}
                   >
                     {mutation.isPending ? (
                       <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         Submitting...
                       </>
                     ) : (
-                      "Get My Free Estimate"
+                      'Get Free Estimate'
                     )}
                   </Button>
                 </form>
@@ -244,78 +254,59 @@ export default function ContactSection() {
             </Card>
           </motion.div>
 
-          {/* Contact Information */}
-          <motion.div 
-            className="space-y-8"
+          {/* Contact Info */}
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="space-y-8"
           >
-            <Card className="shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-blue rounded-lg flex items-center justify-center mr-4 mt-1">
-                      <Phone className="text-white" size={20} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-800">Call Us</p>
-                      <p className="text-gray-600">(555) 123-WASH</p>
-                      <p className="text-sm text-gray-500">Available 7 days a week</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-blue rounded-lg flex items-center justify-center mr-4 mt-1">
-                      <Mail className="text-white" size={20} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-800">Email Us</p>
-                      <p className="text-gray-600">info@jeaniuspowerwashing.com</p>
-                      <p className="text-sm text-gray-500">We respond within 24 hours</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-blue rounded-lg flex items-center justify-center mr-4 mt-1">
-                      <MapPin className="text-white" size={20} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-800">Service Area</p>
-                      <p className="text-gray-600">Greater Metro Area</p>
-                      <p className="text-sm text-gray-500">Within 30 miles of downtown</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-blue rounded-lg flex items-center justify-center mr-4 mt-1">
-                      <Clock className="text-white" size={20} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-800">Business Hours</p>
-                      <p className="text-gray-600">Mon-Sat: 7AM - 7PM</p>
-                      <p className="text-gray-600">Sunday: 9AM - 5PM</p>
-                    </div>
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Phone className="h-6 w-6 text-blue-600 mt-1" />
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Phone</h4>
+                    <p className="text-gray-600">(555) 123-4567</p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex items-start">
+                  <Mail className="h-6 w-6 text-blue-600 mt-1" />
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Email</h4>
+                    <p className="text-gray-600">info@jeaniuspowerwashing.com</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <MapPin className="h-6 w-6 text-blue-600 mt-1" />
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Service Area</h4>
+                    <p className="text-gray-600">Greater Philadelphia Area</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <Clock className="h-6 w-6 text-blue-600 mt-1" />
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Hours</h4>
+                    <p className="text-gray-600">Mon-Sat: 7am - 7pm<br />Sun: 9am - 5pm</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <Card className="bg-primary-blue text-white shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4">Why Choose Jeanius Power Washing?</h3>
-                <ul className="space-y-3">
-                  {benefits.map((benefit) => (
-                    <li key={benefit} className="flex items-center">
-                      <Check className="mr-3 flex-shrink-0" size={20} />
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">Why Choose Us?</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500" />
+                    <span className="ml-2 text-gray-700">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
